@@ -1,1 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ritaco – All SEO Tools</title>
+  <style>
+    body{background:#0f0f0f;color:#c0a;color:#ff00ff;font-family:Arial;margin:0;padding:0}
+    .container{max-width:600px;margin:50px auto;padding:40px;background:#111;border:1px solid #333;border-radius:15px;text-align:center}
+    input,textarea,button{padding:15px;font-size:18px;margin:10px;width:90%;border-radius:10px;border:none}
+    button{background:#ff00ff;color:#000;cursor:pointer}
+    h1{color:#ff00ff}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>RITACO</h1>
+    <p>Mot de passe admin :</p>
+    <input type="password" id="pass" placeholder="entre ici"/>
+    <button onclick="login()">Login</button>
 
+    <div id="panel" style="display:none;margin-top:40px">
+      <h2>Nouveau token (copié depuis Brandseotool)</h2>
+      <textarea id="token" placeholder="colle le twk_token ici" rows="6"></textarea><br>
+      <button onclick="save()">Sauvegarder pour tous les clients</button>
+      <p style="color:#0f0;margin-top:20px">Token actuel mis à jour !</p>
+    </div>
+  </div>
+
+  <script>
+    const PASSWORD = "ritaco2025";
+    async function login(){
+      if(document.getElementById("pass").value===PASSWORD){
+        document.getElementById("panel").style.display="block";
+        const t = await fetch("/api/token").then(r=>r.text());
+        document.getElementById("token").value = t;
+      }else alert("Mauvais mot de passe");
+    }
+    async function save(){
+      await fetch("/api/token",{method:"POST",body:document.getElementById("token").value});
+      alert("Token mis à jour partout !");
+    }
+  </script>
+</body>
+</html>
