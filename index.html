@@ -1,45 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ritaco – All SEO Tools</title>
+  <meta charset="utf-8">
+  <title>Ritaco – Accès instantané SEO Tools</title>
   <style>
-    body{background:#0f0f0f;color:#c0a;color:#ff00ff;font-family:Arial;margin:0;padding:0}
-    .container{max-width:600px;margin:50px auto;padding:40px;background:#111;border:1px solid #333;border-radius:15px;text-align:center}
-    input,textarea,button{padding:15px;font-size:18px;margin:10px;width:90%;border-radius:10px;border:none}
-    button{background:#ff00ff;color:#000;cursor:pointer}
-    h1{color:#ff00ff}
+    body{background:#000;color:#ff00ff;font-family:Arial;text-align:center;padding-top:10%}
+    h1{font-size:50px}
+    button{padding:25px 50px;font-size:28px;margin:20px;border:none;border-radius:20px;cursor:pointer}
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>RITACO</h1>
-    <p>Mot de passe admin :</p>
-    <input type="password" id="pass" placeholder="entre ici"/>
-    <button onclick="login()">Login</button>
-
-    <div id="panel" style="display:none;margin-top:40px">
-      <h2>Nouveau token (copié depuis Brandseotool)</h2>
-      <textarea id="token" placeholder="colle le twk_token ici" rows="6"></textarea><br>
-      <button onclick="save()">Sauvegarder pour tous les clients</button>
-      <p style="color:#0f0;margin-top:20px">Token actuel mis à jour !</p>
-    </div>
-  </div>
-
-  <script>
-    const PASSWORD = "ritaco2025";
-    async function login(){
-      if(document.getElementById("pass").value===PASSWORD){
-        document.getElementById("panel").style.display="block";
-        const t = await fetch("/api/token").then(r=>r.text());
-        document.getElementById("token").value = t;
-      }else alert("Mauvais mot de passe");
-    }
-    async function save(){
-      await fetch("/api/token",{method:"POST",body:document.getElementById("token").value});
-      alert("Token mis à jour partout !");
-    }
-  </script>
+  <h1>RITACO</h1>
+  <p style="font-size:24px">Test gratuit – 1 clic = connecté</p>
+  <br><br>
+  <a href="/semrush.html"><button style="background:#00ff00;color:#000">🚀 Semrush Guru</button></a><br><br>
+  <a href="/ahrefs.html"><button style="background:#ff8800;color:#000">🚀 Ahrefs Enterprise</button></a>
 </body>
 </html>
